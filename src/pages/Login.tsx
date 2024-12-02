@@ -47,6 +47,7 @@ function Login() {
     }
 
     setLoading(false);
+    console.log("Test");
   }
 
 
