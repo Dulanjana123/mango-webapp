@@ -1,0 +1,63 @@
+@import './variables';
+@import './mixins';
+
+.login-section {
+  text-align: center;
+  padding: 2rem;
+
+  .login-form {
+    margin: 2rem auto;
+    max-width: 400px;
+    background-color: $light-gray;
+    padding: 1.5rem;
+    border-radius: $border-radius;
+
+    &__title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    &__error {
+      color: $danger-color;
+      font-size: 0.875rem;
+    }
+
+    &__button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    &__logo {
+      width: 120px;
+      height: auto; 
+      margin-bottom: 1.5rem; 
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+  }
+
+  .button {
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .loader {
+    margin: 1rem auto;
+  }
+}
