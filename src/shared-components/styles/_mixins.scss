@@ -1,0 +1,23 @@
+// Centering content with flexbox
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // Font-size helper
+  @mixin font-size($size) {
+    font-size: $size;
+  }
+  
+  // Box shadow helper
+  @mixin box-shadow($x: 0, $y: 2px, $blur: 4px, $color: rgba(0, 0, 0, 0.1)) {
+    box-shadow: $x $y $blur $color;
+  }
+  
+  @mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

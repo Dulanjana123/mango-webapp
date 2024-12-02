@@ -37,9 +37,9 @@ const Header = () => {
             <NavLink  className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink  className="nav-link" aria-current="page" to="/Products"><i className="bi bi-table"></i></NavLink>
-          </li>
+          </li> */}
 
           <li className="nav-item">
             <NavLink  className="nav-link" aria-current="page" to="/order/myOrders">Orders</NavLink>
@@ -53,7 +53,7 @@ const Header = () => {
             <NavLink  className="nav-link" aria-current="page" to="/authorization">Authorization</NavLink>
           </li> */}
 
-          <li className="nav-item dropdown">
+          {/* <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin Panel
             </a>
@@ -62,7 +62,8 @@ const Header = () => {
               <li><a className="dropdown-item" href="#">Another action</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
+          </li> */}
+
          <div className="d-flex" style={{marginLeft: "auto"}}>
           {userData.id && (
             <>

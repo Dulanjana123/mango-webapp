@@ -7,6 +7,8 @@ import { userModel } from "./types/interfaces";
 import  jwt_decode  from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "./app/store/Redux/authSlice";
+import "../src/shared-components/styles/Login.scss";
+import '../src/shared-components/styles/OrderList.scss';
 
 
 function App() {
