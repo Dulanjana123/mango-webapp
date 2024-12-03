@@ -9,7 +9,7 @@ const store = configureStore({
         userAuthStore: userAuthReducer,
         [productItemService.reducerPath]: productItemService.reducer,
         [authService.reducerPath]: authService.reducer,
-        [orderService.reducerPath]: orderService.reducer
+        [orderService.reducerPath]: orderService.reducer,
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware()
