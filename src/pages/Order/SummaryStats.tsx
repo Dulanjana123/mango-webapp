@@ -6,7 +6,7 @@ const SummaryStats: React.FC = () => {
   const [totalOrders, setTotalOrders] = useState<number>(0);
 
   useEffect(() => {
-    const fetchStats = async () => {
+    const getStats = async () => {
       const token = localStorage.getItem("token");
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
@@ -16,7 +16,7 @@ const SummaryStats: React.FC = () => {
       setTotalRevenue(orders.reduce((sum: number, order: any) => sum + order.orderTotal, 0));
     };
 
-    fetchStats();
+    getStats();
   }, []);
 
   return (

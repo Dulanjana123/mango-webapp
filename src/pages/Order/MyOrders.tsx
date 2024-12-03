@@ -6,19 +6,18 @@ import OrderList from './OrderList';
 import { MainLoader } from '../../app/layout/Page/ProductItems/Common';
 
 function MyOrders() {
-
   const userId = useSelector((state: RootState) => state.userAuthStore.id);
 
-  const {data, isLoading} = useGetAllOrdersQuery(userId)
+  const { data, isLoading, error } = useGetAllOrdersQuery(userId);
 
-  console.log(data);
+  console.log("API Response:", data);
 
-  return (
-    <>
-      {isLoading && <MainLoader/>}
-      {!isLoading && (<OrderList isLoading={isLoading} orderData={data.result}></OrderList>)}
-    </>
-  )
+  if (isLoading) return <MainLoader />;
+  if (error) return <div>Error loading orders</div>;
+
+  const orderList = data?.result || []; // Handle undefined result safely
+
+  return <OrderList isLoading={isLoading} orderData={data || []}></OrderList>;
 }
 
-export default withAuth(MyOrders)
+export default withAuth(MyOrders);

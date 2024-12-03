@@ -30,7 +30,7 @@ const SalesChart: React.FC = () => {
         label: "Weekly Sales",
         data: [120, 190, 300, 500, 200, 300, 400],
         borderColor: "rgba(75,192,192,1)",
-        backgroundColor: "rgba(75,192,192,0.2)", // Optional: For a fill effect
+        backgroundColor: "rgba(75,192,192,0.2)", 
         fill: false,
       },
     ],
