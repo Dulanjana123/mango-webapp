@@ -1,0 +1,67 @@
+@import './_variables';
+@import './_mixins';
+
+// General Reset and Defaults
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: $light-gray; // Using a variable from _variables.scss
+  color: $text-color; // Define a base text color in _variables.scss
+  height: 100%; // Ensure full height
+}
+
+html {
+  height: 100%; // Ensure full height
+}
+
+#root {
+  height: 100%; // Match height for React root
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Full height for the app
+
+  .app__layout {
+    display: flex;
+    flex: 1; // Pushes footer to the bottom
+
+    .sidebar {
+      width: 165px;
+      background-color: $sidebar-bg; // Variable for sidebar background
+      height: 100%; // Full height
+      padding: 1rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+      .menu-item {
+        color: $light-color;
+        padding: 10px;
+        border-radius: $border-radius;
+
+        &:hover {
+          background-color: lighten($sidebar-bg, 10%);
+        }
+      }
+    }
+
+    .app__content {
+      flex: 1; // Occupies remaining space
+      padding: 20px;
+      background-color: $light-gray; // Light background for content
+      padding: 1rem;
+      overflow-y: auto; // Ensure scrolling if content overflows
+    }
+  }
+
+  .footer {
+    background-color: $dark-gray;
+    color: $light-color;
+    text-align: center;
+    padding: 10px 0;
+
+    i {
+      color: $danger-color; // For the heart icon
+    }
+  }
+}

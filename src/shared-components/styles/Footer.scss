@@ -1,0 +1,12 @@
+@import './_variables';
+
+.footer {
+  background-color: $dark-gray;
+  color: $light-color;
+  text-align: center;
+  padding: $padding-base / 2;
+
+  i {
+    color: $danger-color;
+  }
+}

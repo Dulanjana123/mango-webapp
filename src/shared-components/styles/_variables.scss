@@ -7,6 +7,8 @@ $border-color: #ccc; // Input and button border color
 // Typography
 $font-size-base: 16px; // Base font size
 $font-size-sm: 0.875rem; // Small font size
+$font-size-md: 1rem; // Small font size
+$font-size-lg: 2rem; // Small font size
 
 // Spacing and Dimensions
 $border-radius: 5px; // Rounded corners for inputs, buttons
@@ -20,4 +22,38 @@ $light-gray: #f8f9fa;
 $hover-gray: #e9ecef;
 $border-color: #dee2e6;
 $border-radius: 4px;
+
+$primary-color: #007bff;
+$light-gray: #f8f9fa;
+$dark-gray: #343a40; //header and footer colors
+$light-color: #ffffff;
+$text-color: #212529;
+$danger-color: #dc3545;
+//$sidebar-bg: #4d4f52; //sidebar colors
+$sidebar-bg: #343a42; //sidebar colors
+//$sidebar-bg: #ededed; //sidebar colors
+$border-radius: 5px;
+
+// Colors
+$primary-color: #007bff;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$dark-gray: #343a40;
+$light-color: #ffffff;
+$text-color: #f8f9fa;
+
+// Typography
+$font-size-base: 16px;
+$font-size-sm: 0.875rem;
+
+// Spacing and Dimensions
+$border-radius: 5px;
+$padding-base: 1rem;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+
+
 
