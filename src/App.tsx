@@ -4,14 +4,17 @@ import { Footer } from "./app/layout/Footer";
 import Sidebar from "../src/app/layout/Sidebar/Sidebar";
 import "../src/shared-components/styles/Login.scss";
 import '../src/shared-components/styles/OrderList.scss';
+import "../src/shared-components/styles/Dashboard.scss";
 import {
   AccessDenied,
   AuthenticationTest,
   AuthenticationTestAdmin,
+  Dashboard,
   Home,
   Login,
   MyOrders,
   NotFound,
+  OrderCards,
   ProductItemDetails,
 } from "./pages";
 import { useEffect } from "react";
@@ -52,6 +55,8 @@ function App() {
               element={<AuthenticationTestAdmin />}
             />
             <Route path="/order/myOrders" element={<MyOrders />} />
+            <Route path="/order/OrderCards" element={<OrderCards />} />
+            <Route path="/order/Dashboard" element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
