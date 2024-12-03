@@ -1,0 +1,35 @@
+.dashboard-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  
+    .summary-section {
+      display: flex;
+      gap: 20px;
+      justify-content: space-around;
+  
+      .stat-card {
+        background: #f8f9fa;
+        padding: 20px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+    }
+  
+    .chart-section {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    .orders-section {
+      .order-card-container {
+        margin-top: 20px;
+      }
+    }
+  }
+  
