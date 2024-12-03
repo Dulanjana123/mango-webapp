@@ -1,0 +1,59 @@
+@import './_variables';
+
+.navbar {
+  background-color: $dark-gray;
+
+  .navbar-brand img {
+    height: 40px;
+    margin: 0.5rem;
+  }
+
+  .nav-link {
+    color: $light-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  .welcome-message {
+    background: transparent;
+    border: 0;
+    color: $light-color;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    margin-top: 10px;
+  }
+
+  .app-name {
+    background: transparent;
+    border: 0;
+    color: $light-color;
+    cursor: pointer;
+    font-size: $font-size-lg;
+  }
+
+  .btn-logout {
+    border: none;
+    height: 40px;
+    width: 100px;
+    background-color: $success-color;
+    color: $light-color;
+
+    &:hover {
+      background-color: darken($success-color, 10%);
+    }
+  }
+
+  .btn-login {
+    border: none;
+    height: 40px;
+    width: 100px;
+    background-color: $success-color;
+    color: $light-color;
+
+    &:hover {
+      background-color: darken($success-color, 10%);
+    }
+  }
+}

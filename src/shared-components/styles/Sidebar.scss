@@ -1,0 +1,74 @@
+// Import variables and mixins
+@import './_variables';
+@import './_mixins';
+
+// General Reset and Defaults
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: $light-gray; // Using a variable from _variables.scss
+  color: $text-color; // Define a base text color in _variables.scss
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+}
+
+// Utility Classes
+.text-center {
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+// Navbar Styles
+.navbar {
+  background-color: $dark-gray; // Assuming $dark-gray is defined in _variables.scss
+  .nav-link {
+    color: $light-color; // Lighter text for dark backgrounds
+    margin: 0 10px;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+// Footer Styles
+.footer {
+  background-color: $dark-gray;
+  color: $light-color;
+  text-align: center;
+  padding: 10px 0;
+
+  i {
+    color: $danger-color; // For the heart icon
+  }
+}
+
+// Sidebar Styles
+.sidebar {
+  //background-color: $sidebar-bg; // Define this in _variables.scss
+  background-color: $dark-gray; // Define this in _variables.scss
+  height: 100vh;
+  padding: 1rem;
+
+  .menu-item {
+    color: $light-color;
+    padding: 1px;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: lighten($sidebar-bg, 10%);
+    }
+  }
+}
