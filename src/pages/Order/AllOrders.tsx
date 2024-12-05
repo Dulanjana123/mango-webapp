@@ -1,32 +1,21 @@
+import React, { useEffect, useState } from 'react';
 import { withAuth } from '../../HOC';
 import { useGetAllOrdersQuery } from '../../app/services/api/orderService';
 import OrderList from './OrderList';
-import { MainLoader } from '../../app/layout/Page/ProductItems/Common';
-import { useEffect, useState } from 'react';
-import inputHelper from '../../Helper/inputHelper';
+import InputField from '../../shared-components/atoms/Order/InputField';
+import Button from '../../shared-components/atoms/Order/Button';
 import { OrderStatus } from '../../types/enums/order-status';
-
+import inputHelper from '../../Helper/inputHelper';
+import SelectDropdown from '../../shared-components/atoms/Order/SelectDropdown';
+import { MainLoader } from '../../app/layout/Page/ProductItems/Common';
 
 const filterOptions = ["All", OrderStatus.Confirmed, OrderStatus.Pending, OrderStatus.Cancelled];
 
 function AllOrders() {
-  const [filters, setFilters] = useState<{ searchString: string; status: string }>({
-    searchString: "",
-    status: "",
-  });
-
-  const[orderData, setOrderData] = useState([]);
-
-  const [pageOptions, setPageOptions] = useState({
-    pageNumber: 1,
-    pageSize: 5,
-    totalRecords: 0,
-  });
-
-  const [apiFilters, setApiFilters] = useState({
-    searchString: "",
-    status: "",
-  });
+  const [filters, setFilters] = useState({ searchString: "", status: "" });
+  const [orderData, setOrderData] = useState([]);
+  const [pageOptions, setPageOptions] = useState({ pageNumber: 1, pageSize: 5, totalRecords: 0 });
+  const [apiFilters, setApiFilters] = useState({ searchString: "", status: "" });
 
   const { data, isLoading, error } = useGetAllOrdersQuery({
     searchString: apiFilters.searchString,
@@ -37,13 +26,8 @@ function AllOrders() {
 
   useEffect(() => {
     if (data) {
-
       setOrderData(data.result);
-
-      setPageOptions((prev) => ({
-        ...prev,
-        totalRecords: data.pagination.totalRecords,
-      }));
+      setPageOptions((prev) => ({ ...prev, totalRecords: data.pagination.totalRecords }));
     }
   }, [data]);
 
@@ -54,10 +38,7 @@ function AllOrders() {
 
   const handleFilters = () => {
     setApiFilters(filters);
-    setPageOptions((prev) => ({
-      ...prev,
-      pageNumber: 1, // Reset to first page on new filter
-    }));
+    setPageOptions((prev) => ({ ...prev, pageNumber: 1 }));
   };
 
   const handlePageChange = (newPage: number) => {
@@ -68,74 +49,45 @@ function AllOrders() {
   if (error) return <div>Error loading orders</div>;
 
   const orderList = data?.result || [];
-  const numberOfPages = pageOptions.totalRecords / pageOptions.pageSize;
-  const totalPages = Math.ceil(numberOfPages);
-
-  const getPageDetails = () => {
-    const dataStartNumber = (pageOptions.pageNumber - 1) * pageOptions.pageSize + 1;
-    const dataEndNumber = pageOptions.pageNumber * pageOptions.pageSize;
-    const totalPages = pageOptions.totalRecords / pageOptions.pageSize;
-  };
-
-  function setCurrentPageSize(setpageSize: number) {
-    setPageOptions((prev) => ({ ...prev, pageNumber: setpageSize }));
-    
-  }
+  const totalPages = Math.ceil(pageOptions.totalRecords / pageOptions.pageSize);
 
   return (
     <div className="all-orders-container">
-
       <div className="filter-bar">
         <h1 className="order-list__title">All Orders</h1>
         <div className="filter-inputs">
-          <input
+          <InputField
             type="text"
-            className="form-control"
             placeholder="Search Name, Email or Phone"
             name="searchString"
+            value={filters.searchString}
             onChange={handleChange}
           />
-          <select className="form-select" onChange={handleChange} name="status">
-            {filterOptions.map((item, index) => (
-              <option key={index} value={item === "All" ? "" : item}>
-                {item}
-              </option>
-            ))}
-          </select>
-          <button className="btn btn-outline-success" onClick={handleFilters}>
-            Filter
-          </button>
+          <SelectDropdown
+            options={filterOptions}
+            name="status"
+            value={filters.status}
+            onChange={handleChange}
+          />
+          <Button label="Filter" onClick={handleFilters} className="btn-outline-success" />
         </div>
       </div>
 
-      <OrderList isLoading={isLoading} orderData={orderList}></OrderList>
+      <OrderList isLoading={isLoading} orderData={orderList} />
       <div className="pagination">
-        <div>Rows per page: </div> 
-        <div className="Rows">
-          <select className="form-select mx-2"
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            setCurrentPageSize(Number(e.target.value))
-          }}
-          >
-          </select>
-        </div>
-        <button
-          className="btn btn-outline-primary"
-          disabled={pageOptions.pageNumber === 1}
+        <Button
+          label="Previous"
           onClick={() => handlePageChange(pageOptions.pageNumber - 1)}
-        >
-          Previous
-        </button>
-        <span>
-          Page {pageOptions.pageNumber} of {totalPages}
-        </span>
-        <button
-          className="btn btn-outline-primary"
-          disabled={pageOptions.pageNumber === totalPages}
+          disabled={pageOptions.pageNumber === 1}
+          className="btn-outline-primary"
+        />
+        <span>Page {pageOptions.pageNumber} of {totalPages}</span>
+        <Button
+          label="Next"
           onClick={() => handlePageChange(pageOptions.pageNumber + 1)}
-        >
-          Next
-        </button>
+          disabled={pageOptions.pageNumber === totalPages}
+          className="btn-outline-primary"
+        />
       </div>
     </div>
   );
