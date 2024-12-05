@@ -18,12 +18,17 @@ const Sidebar = () => {
             role="button"
             aria-expanded="false"
           >
-            <i className="bi bi-list-check"></i> Order
+            <i className="bi bi-list-check"></i> Orders
           </a>
           <ul className="dropdown-menu">
           <li>
+            <NavLink to="/order/AllOrders" className="dropdown-item">
+              All Orders
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/order/myOrders" className="dropdown-item">
-              Order List
+              My Orders
             </NavLink>
           </li>
           <li>

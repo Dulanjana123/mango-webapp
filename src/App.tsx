@@ -5,8 +5,10 @@ import Sidebar from "../src/app/layout/Sidebar/Sidebar";
 import "../src/shared-components/styles/Login.scss";
 import '../src/shared-components/styles/OrderList.scss';
 import "../src/shared-components/styles/Dashboard.scss";
+import "../src/shared-components/styles/AllOrders.scss";
 import {
   AccessDenied,
+  AllOrders,
   AuthenticationTest,
   AuthenticationTestAdmin,
   Dashboard,
@@ -55,6 +57,7 @@ function App() {
               element={<AuthenticationTestAdmin />}
             />
             <Route path="/order/myOrders" element={<MyOrders />} />
+            <Route path="/order/AllOrders" element={<AllOrders />} />
             <Route path="/order/OrderCards" element={<OrderCards />} />
             <Route path="/order/Dashboard" element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />

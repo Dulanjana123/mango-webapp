@@ -8,7 +8,7 @@ import { MainLoader } from '../../app/layout/Page/ProductItems/Common';
 function MyOrders() {
   const userId = useSelector((state: RootState) => state.userAuthStore.id);
 
-  const { data, isLoading, error } = useGetAllOrdersQuery(userId);
+  const { data, isLoading, error } = useGetAllOrdersQuery({userId});
 
   console.log("API Response:", data);
 
@@ -17,7 +17,15 @@ function MyOrders() {
 
   const orderList = data?.result || []; // Handle undefined result safely
 
-  return <OrderList isLoading={isLoading} orderData={data || []}></OrderList>;
+  return (
+    <>
+    <div className='all-orders-container'>
+      <h1 className="order-list__title">My Orders</h1>
+    </div>
+    <OrderList isLoading={isLoading} orderData={orderList || []}></OrderList>
+    </>
+    
+);
 }
 
 export default withAuth(MyOrders);

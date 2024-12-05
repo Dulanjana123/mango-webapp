@@ -8,5 +8,6 @@ import AuthenticationTestAdmin from "./AuthenticationTestAdmin";
 import MyOrders from "./Order/MyOrders";
 import OrderCards from "./Order/OrderCards";
 import Dashboard from "./Order/Dashboard";
+import AllOrders from "./Order/AllOrders";
 
-export {Home, NotFound, ProductItemDetails, Login, AccessDenied, AuthenticationTest, AuthenticationTestAdmin, MyOrders,OrderCards, Dashboard}
+export {Home, NotFound, ProductItemDetails, Login, AccessDenied, AuthenticationTest, AuthenticationTestAdmin, MyOrders, AllOrders, OrderCards, Dashboard}
