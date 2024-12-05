@@ -5,9 +5,9 @@ import { setLoggedInUser } from '../app/store/Redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import LoginForm from '../../src/shared-components/molecules/LoginForm';
-import Loader from '../../src/shared-components/atoms/Order/Loader';
+import Loader from '../../src/shared-components/atoms/Loader';
 import { apiResponse, userModel } from '../types/interfaces';
-//import "../../src/shared-components/styles/Login.scss";
+
 
 
 const Login: React.FC = () => {

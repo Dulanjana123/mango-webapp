@@ -1,3 +1,4 @@
+// shared-components/atoms/InputField.tsx
 import React from 'react';
 
 interface InputFieldProps {
@@ -8,6 +9,7 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   required?: boolean;
+  disabled?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -18,6 +20,7 @@ const InputField: React.FC<InputFieldProps> = ({
   onChange,
   className = "",
   required = false,
+  disabled = false,
 }) => (
   <input
     type={type}
@@ -25,8 +28,9 @@ const InputField: React.FC<InputFieldProps> = ({
     name={name}
     value={value}
     onChange={onChange}
-    className= "input-field"
+    className={`input-field ${className}`}
     required={required}
+    disabled={disabled}
   />
 );
 

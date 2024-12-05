@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { withAuth } from '../../HOC';
 import { useGetAllOrdersQuery } from '../../app/services/api/orderService';
 import OrderList from './OrderList';
-import InputField from '../../shared-components/atoms/Order/InputField';
-import Button from '../../shared-components/atoms/Order/Button';
 import { OrderStatus } from '../../types/enums/order-status';
 import inputHelper from '../../Helper/inputHelper';
-import SelectDropdown from '../../shared-components/atoms/Order/SelectDropdown';
 import { MainLoader } from '../../app/layout/Page/ProductItems/Common';
+import { Button, InputField, SelectDropdown,  } from '../../shared-components/atoms';
 
 const filterOptions = ["All", OrderStatus.Confirmed, OrderStatus.Pending, OrderStatus.Cancelled];
 
@@ -27,7 +25,7 @@ function AllOrders() {
   useEffect(() => {
     if (data) {
       setOrderData(data.result);
-      setPageOptions((prev) => ({ ...prev, totalRecords: data.pagination.totalRecords }));
+      setPageOptions((setPage) => ({ ...setPage, totalRecords: data.pagination.totalRecords }));
     }
   }, [data]);
 
@@ -38,11 +36,11 @@ function AllOrders() {
 
   const handleFilters = () => {
     setApiFilters(filters);
-    setPageOptions((prev) => ({ ...prev, pageNumber: 1 }));
+    setPageOptions((setPage) => ({ ...setPage, pageNumber: 1 }));
   };
 
   const handlePageChange = (newPage: number) => {
-    setPageOptions((prev) => ({ ...prev, pageNumber: newPage }));
+    setPageOptions((setPage) => ({ ...setPage, pageNumber: newPage }));
   };
 
   if (isLoading) return <MainLoader />;
@@ -58,6 +56,7 @@ function AllOrders() {
         <div className="filter-inputs">
           <InputField
             type="text"
+            className="form-control"
             placeholder="Search Name, Email or Phone"
             name="searchString"
             value={filters.searchString}
@@ -69,7 +68,7 @@ function AllOrders() {
             value={filters.status}
             onChange={handleChange}
           />
-          <Button label="Filter" onClick={handleFilters} className="btn-outline-success" />
+          <Button label="Filter" onClick={handleFilters} className="btn btn-outline-primary" />
         </div>
       </div>
 
@@ -79,14 +78,14 @@ function AllOrders() {
           label="Previous"
           onClick={() => handlePageChange(pageOptions.pageNumber - 1)}
           disabled={pageOptions.pageNumber === 1}
-          className="btn-outline-primary"
+          className="btn btn-outline-primary"
         />
         <span>Page {pageOptions.pageNumber} of {totalPages}</span>
         <Button
           label="Next"
           onClick={() => handlePageChange(pageOptions.pageNumber + 1)}
           disabled={pageOptions.pageNumber === totalPages}
-          className="btn-outline-primary"
+          className="btn btn-outline-primary"
         />
       </div>
     </div>
@@ -94,3 +93,4 @@ function AllOrders() {
 }
 
 export default withAuth(AllOrders);
+

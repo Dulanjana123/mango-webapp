@@ -7,7 +7,7 @@ function TableHeader() {
       <div className="table-header__cell">Total</div>
       <div className="table-header__cell">Items</div>
       <div className="table-header__cell">Date</div>
-      <div className="table-header__cell"></div>
+      <div className="table-header__cell">Status</div>
     </div>
   );
 }
