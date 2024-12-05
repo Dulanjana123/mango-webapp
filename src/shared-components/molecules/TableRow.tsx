@@ -15,9 +15,7 @@ function TableRow({ orderItem }: TableRowProps) {
       <div className="table-row__cell">
         {new Date(orderItem.orderDate!).toLocaleDateString()}
       </div>
-      <div className="table-row__cell">
-        <button className="btn btn-success">Details</button>
-      </div>
+      <div className="table-row__cell">{orderItem.status}</div>
     </div>
   );
 }

@@ -12,10 +12,11 @@ function OrderList({ isLoading, orderData }: OrderListProps) {
   return (
     <>
       {isLoading && <MainLoader />}
-      {!isLoading && (
+      {!isLoading && orderData.length === 0 && (
+        <div>No orders available.</div>
+      )}
+      {!isLoading && orderData.length > 0 && (
         <div className="order-list">
-          <h1 className="order-list__title">Orders List</h1>
-          
           <div className="order-list__table">
             <TableHeader />
             {orderData.map((orderItem: orderHeader) => (

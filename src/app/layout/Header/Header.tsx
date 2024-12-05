@@ -4,6 +4,7 @@ import { userModel } from "../../../types/interfaces";
 import { RootState } from "../../store/Redux/store";
 import { emptyUserState, setLoggedInUser } from "../../store/Redux/authSlice";
 import "../../../shared-components/styles/Header.scss";
+import { Button } from '../../../shared-components/atoms';
 
 const logo = require("../../../assets/images/mango.png");
 
@@ -26,9 +27,7 @@ const Header = () => {
           <img src={logo} alt="Logo" />
         </NavLink>
         
-        <button className="app-name">
-          Codice
-        </button>
+        <Button type="button" label="Codice" className="app-name"/>
         
         <button
           className="navbar-toggler"
@@ -47,14 +46,10 @@ const Header = () => {
               {userData.id ? (
                 <>
                   <li className="nav-item">
-                    <button className="welcome-message">
-                      Welcome, {userData.name}
-                    </button>
+                    <Button type="button" label={`Welcome,  ${userData.name}`} className="welcome-message"/>
                   </li>
                   <li className="nav-item">
-                    <button className="btn btn-logout mx-2" onClick={handleLogout}>
-                      Logout
-                    </button>
+                    <Button type="submit" label="Logout" className="btn btn-logout mx-2"  onClick={handleLogout}/>
                   </li>
                 </>
               ) : (

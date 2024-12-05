@@ -1,7 +1,6 @@
 import React from 'react';
-import InputField from '../atoms/InputField';
-import Button from '../atoms/Button';
-const logo = require("../../assets/images/mango.png")
+import { Button, InputField } from '../atoms';
+const logo = require("../../assets/images/mango.png");
 
 interface LoginFormProps {
   userInput: { email: string; password: string };
@@ -10,13 +9,14 @@ interface LoginFormProps {
   error: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ userInput, onChange, onSubmit, error }) => (
+const LoginForm: React.FC<LoginFormProps> = ({
+  userInput,
+  onChange,
+  onSubmit,
+  error,
+}) => (
   <form className="login-form" onSubmit={onSubmit}>
-    <img
-    src={logo}
-    alt="Mango Logo"
-    className="login-form__logo"
-    />
+    <img src={logo} alt="Mango Logo" className="login-form__logo" />
     <h1 className="login-form__title">Login</h1>
     <InputField
       type="text"
@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ userInput, onChange, onSubmit, er
       onChange={onChange}
     />
     {error && <p className="login-form__error">{error}</p>}
-    <Button type="submit" label="Login" className="login-form__button" />
+    <Button type="submit" label="Login" className="btn btn-outline-success"/>
   </form>
 );
 
