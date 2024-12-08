@@ -5,9 +5,9 @@ export default interface orderHeader {
     pickupEmail?: string
     applicationUserId?: string
     user?: any
-    orderTotal?: number
-    orderDate?: string
+    orderTotal: number
+    orderDate: string
     stripePaymentIntentID?: string
-    status?: string
+    status: string
     totalItems?: number
   }

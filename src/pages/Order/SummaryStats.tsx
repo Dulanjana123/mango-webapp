@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import chalk from 'chalk';
+import { useGetAllOrdersQuery } from "../../app/services/api/orderService";
 
 const SummaryStats: React.FC = () => {
   const [totalRevenue, setTotalRevenue] = useState<number>(0);
   const [totalOrders, setTotalOrders] = useState<number>(0);
+  const {data} = useGetAllOrdersQuery({});
 
   useEffect(() => {
-    const getStats = async () => {
-      const token = localStorage.getItem("token");
-      const config = { headers: { Authorization: `Bearer ${token}` } };
+      if(data?.result){
+        const orders = data?.result;
+        setTotalOrders(orders.length);
+        setTotalRevenue(orders.reduce((sum: number, order: any) => sum + order.orderTotal, 0));
+      }
 
-      const response = await axios.get("http://localhost:3000/api/order", config);
-      const orders = response.data.result;
-      setTotalOrders(orders.length);
-      setTotalRevenue(orders.reduce((sum: number, order: any) => sum + order.orderTotal, 0));
-    };
-
-    getStats();
-  }, []);
+    console.log(chalk.blue.bgRed.bold('Hello world!'));
+  }, [data]);
 
   return (
     <div className="summary-stats">
