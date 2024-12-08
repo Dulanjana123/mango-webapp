@@ -1,52 +1,26 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import  "../../shared-components/styles/OrderCard.scss";
-
-interface OrderDto {
-  orderHeaderId: number;
-  pickupName: string;
-  pickupPhoneNumber: string;
-  pickupEmail: string;
-  applicationUserId: string;
-  user: any | null;
-  orderTotal: number;
-  orderDate: string;
-  stripePaymentIntentID: string;
-  status: string;
-  totalItems: number;
-}
+import { orderHeader } from "../../types/interfaces";
+import { useGetAllOrdersQuery } from "../../app/services/api/orderService";
+import { MainLoader } from "../../app/layout/Page/ProductItems/Common";
 
 const OrderCards: React.FC = () => {
-  const [orders, setOrders] = useState<OrderDto[]>([]);
+
+  const {data, isLoading, error} = useGetAllOrdersQuery({pageSize : 6})
+  const [orders, setOrders] = useState<orderHeader[]>([]);
 
   useEffect(() => {
-    const fetchOrders = async () => {
-      try {
+        if(data?.result){
+          setOrders(data.result);
+        }
+  }, [data]);
 
-        const token = localStorage.getItem("token"); 
-          if (!token) {
-            throw new Error("No authentication token found"); 
-          }
-          
-          const config = {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          };
-
-        const response = await axios.get("http://localhost:3000/api/order", config); 
-        setOrders(response.data.result);
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-      }
-    };
-
-    fetchOrders();
-  }, []);
+  if(isLoading) return <MainLoader/>
+  if(error) return <div>Error loading orders</div>
 
   return (
     <div className="order-card-container">
-      {orders.map((order) => (
+
+      {orders?.length > 0 ? (orders.map((order) => (
         <div className="order-card" key={order.orderHeaderId}>
           <div className="order-header">Order #{order.orderHeaderId}</div>
           <div className="order-info">
@@ -74,7 +48,11 @@ const OrderCards: React.FC = () => {
           <div className="order-total">Total: ${order.orderTotal.toFixed(2)}</div>
           <div className={`status ${order.status.toLowerCase()}`}>{order.status}</div>
         </div>
-      ))}
+      ))) : (
+        <div>No data to dispaly</div>
+      ) }
+
+      
     </div>
   );
 };

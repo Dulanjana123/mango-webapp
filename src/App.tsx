@@ -6,6 +6,7 @@ import "../src/shared-components/styles/Login.scss";
 import '../src/shared-components/styles/OrderList.scss';
 import "../src/shared-components/styles/Dashboard.scss";
 import "../src/shared-components/styles/AllOrders.scss";
+import "../src/shared-components/styles/OrderCard.scss";
 import {
   AccessDenied,
   AllOrders,
