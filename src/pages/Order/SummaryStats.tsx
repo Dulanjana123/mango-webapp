@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import chalk from 'chalk';
-import { useGetAllOrdersQuery } from "../../app/services/api/orderService";
+import { useGetAllOrdersQuery, useGetDashboardDetailsQuery } from "../../app/services/api/orderService";
 
 const SummaryStats: React.FC = () => {
   const [totalRevenue, setTotalRevenue] = useState<number>(0);
   const [totalOrders, setTotalOrders] = useState<number>(0);
-  const {data} = useGetAllOrdersQuery({});
+  const {data} = useGetDashboardDetailsQuery({});
 
   useEffect(() => {
       if(data?.result){
