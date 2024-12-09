@@ -1,4 +1,4 @@
-import { withAuth } from '../../HOC'
+import { withAuth } from '../../hoc'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store/Redux/store';
 import { useGetAllOrdersQuery } from '../../app/services/api/orderService';

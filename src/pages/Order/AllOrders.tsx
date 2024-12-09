@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { withAuth } from '../../HOC';
+import { withAuth } from '../../hoc';
 import { useGetAllOrdersQuery } from '../../app/services/api/orderService';
 import OrderList from './OrderList';
 import { OrderStatus } from '../../types/enums/order-status';
-import inputHelper from '../../Helper/inputHelper';
+import inputHelper from '../../helper/inputHelper';
 import { MainLoader } from '../../app/layout/Page/ProductItems/Common';
 import { Button, InputField, SelectDropdown,  } from '../../shared-components/atoms';
 

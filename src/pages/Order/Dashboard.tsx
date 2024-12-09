@@ -2,7 +2,7 @@ import React from "react";
 import OrderCards from "./OrderCards";
 import SummaryStats from "./SummaryStats";
 import SalesChart from "./SalesChart";
-import { withAuth } from "../../HOC";
+import { withAuth } from "../../hoc";
 
 const Dashboard: React.FC = () => {
 

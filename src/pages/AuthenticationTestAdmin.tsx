@@ -1,5 +1,5 @@
 import React from 'react'
-import { withAdminAuth } from '../HOC';
+import { withAdminAuth } from '../hoc';
 
 function AuthenticationTestAdmin() {
   return (
