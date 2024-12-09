@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetProductItemByIdQuery } from '../app/services/api/ProductItemService';
 import {useState} from "react";    
-import { toastNotify } from '../Helper';
+import { toastNotify } from '../helper';
 import { userModel } from '../types/interfaces';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store/Redux/store';
