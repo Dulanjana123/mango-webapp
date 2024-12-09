@@ -9,13 +9,13 @@ const productItemApi = createApi({
     endpoints: (builder) => ({
         getProductItems : builder.query({
             query: () => ({
-                url:"productitem"
+                url:"product"
             }),
             providesTags:["ProductItems"]
         }),
         getProductItemById : builder.query({
             query: (id) => ({
-                url:`productitem/${id}`,
+                url:`product/${id}`,
             }),
             providesTags:["ProductItems"]
         })

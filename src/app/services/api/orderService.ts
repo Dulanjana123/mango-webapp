@@ -48,7 +48,7 @@ const orderService = createApi({
     endpoints: (builder) => ({
         getAllOrders: builder.query({
             query: (queryParams: {userId?: string; searchString?: string; status?: string; pageNumber?: number; pageSize?: number;}) => ({
-                url: "order",
+                url: "order/paginated",
                 params: {
                     ...queryParams,
                 },
@@ -65,6 +65,12 @@ const orderService = createApi({
             }),
             providesTags: ["Orders"],
         }),
+        getDashboardDetails: builder.query({
+            query: () => ({
+                url: `order`,
+            }),
+            providesTags: ["Orders"],
+        }),
         createOrder: builder.mutation({
             query: (orderData: { items: Array<any>; total: number }) => ({
                 url: "order",
@@ -76,5 +82,5 @@ const orderService = createApi({
     }),
 });
 
-export const { useGetAllOrdersQuery, useGetOrderDetailsQuery, useCreateOrderMutation } = orderService;
+export const { useGetAllOrdersQuery, useGetOrderDetailsQuery, useGetDashboardDetailsQuery, useCreateOrderMutation } = orderService;
 export default orderService;
