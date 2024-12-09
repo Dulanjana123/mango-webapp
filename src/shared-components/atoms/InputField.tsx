@@ -1,28 +1,24 @@
-// shared-components/atoms/InputField.tsx
 import React from 'react';
+import { Input, InputProps } from 'reactstrap';
 
-interface InputFieldProps {
-  type: string;
-  placeholder: string;
+interface InputFieldProps extends InputProps {
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-  required?: boolean;
-  disabled?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
-  type,
-  placeholder,
+  type = "text", // Default to "text"
+  placeholder = "",
   name,
   value,
   onChange,
   className = "",
   required = false,
   disabled = false,
+  ...props
 }) => (
-  <input
+  <Input
     type={type}
     placeholder={placeholder}
     name={name}
@@ -31,6 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
     className={`input-field ${className}`}
     required={required}
     disabled={disabled}
+    {...props}
   />
 );
 

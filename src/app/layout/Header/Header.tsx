@@ -29,7 +29,7 @@ const Header = () => {
         
         <Button type="button" label="Codice" className="app-name"/>
         
-        <button
+        {/* <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -39,7 +39,7 @@ const Header = () => {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100">
             <div className="d-flex ms-auto">
